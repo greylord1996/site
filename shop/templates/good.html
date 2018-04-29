@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+<!DOCTYPE html>
+{% load staticfiles %}
+
+{% block title %}{{ good.name }} :: {{ good.category.name }}{% endblock %}
+
+{% block main %}
+    <h2>{{ good.name }}</h2>
+    <p class="category">Категория: {{ good.category.name }}</p>
+    <p>{{ good.description|linebreaksbr }}</p>
+    <p class="not-in-stock">{% if not good.in_stock %}Нет в наличии!{% endif %}</p>
+    <p><a href="/goods/{{ good.category.id }}/">Назад</a></p>
+{% endblock %}
+
