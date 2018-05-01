@@ -18,7 +18,7 @@ def index(request, cat_id):
         cat = Category.objects.first()
     else:
         cat = Category.objects.get(pk=cat_id)
-    paginator = Paginator(Good.objects.filter(category=cat).order_by("name"), 3)
+    paginator = Paginator(Good.objects.filter(category=cat).order_by("name"), 5)
     try:
         goods = paginator.page(page_num)
     except InvalidPage:
