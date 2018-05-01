@@ -47,7 +47,7 @@ body{
 }
 
 #main table td, #main, table th{
-    border: 1px #666666 solid;
+    border: 1px #3d3b3f solid;
     padding: 5px;
 }
 
@@ -60,12 +60,12 @@ body{
 }
 
 #main p.not-in-stock{
-    color: #ff0000;
+    color: #564dff;
 }
 
 #footer{
     text-align: right;
-    border-top: 1px #cccccc solid;
+    border-top: 1px #3cb5cc solid;
     padding-right: 10px;
 }
 
