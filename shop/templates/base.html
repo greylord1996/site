@@ -15,7 +15,7 @@
     <div id="leftmenu">
      <ul>
         {% for cat in cats %}
-            <li><a href="/goods/{{ cat.id }}/">{{ cat.name }}</a></li>
+            <li><a href="{% url "index" cat.id %}">{{ cat.name }}</a></li>
         {% endfor %}
     </ul>
     </div>

@@ -6,5 +6,5 @@ urlpatterns = [
     #url(r'^(?: (?P<id>\d+)/)?$', views.index, name="index"),
     url(r'^(?P<cat_id>\d+)/$', views.index, name="index"),
     url(r'^good/(?P<id>\d+)/$', views.good, name="good"),
-    url(r'', views.list, name="list"),
+    #url(r'', views.list, name="list"),
 ]

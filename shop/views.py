@@ -1,31 +1,29 @@
 from django.shortcuts import render
 from django.http import HttpResponse, Http404
 from shop.models import Good, Category
+from django.core.paginator import Paginator
+from django.core.paginator import InvalidPage
 
+"""
 def list(request):
     return HttpResponse("Page doesn't exist")
-
+"""
 def index(request, cat_id):
-    if cat_id is not None:
-        try:
-            cat = Category.objects.get(pk=cat_id)
-        except cat.DoesNotExist:
-            raise Http404
-    else:
-        cat = Category.objects.first()
-        HttpResponse("Priveeeeeeeeeeeeeeet")
     try:
-        goodsAll = Good.objects.filter(category=cat).order_by("name")
-    except Good.DoesNotExist:
-        raise Http404
-
-    s = "Категория: " + cat.name +"<br><br>"
-
-    for ggg in goodsAll:
-        s = s + "(" + str(ggg.pk) + ") " + ggg.name + "<br>"
-
-    #return HttpResponse(s)
-    return render(request, 'index.html', context={'cat': cat, 'goodsAll': goodsAll})
+        page_num = request.GET["page"]
+    except KeyError:
+        page_num = 1
+    cats = Category.objects.all().order_by("name")
+    if cat_id == None:
+        cat = Category.objects.first()
+    else:
+        cat = Category.objects.get(pk=cat_id)
+    paginator = Paginator(Good.objects.filter(category=cat).order_by("name"), 3)
+    try:
+        goods = paginator.page(page_num)
+    except InvalidPage:
+        goods = paginator.page(1)
+    return render(request, "index.html", context={'category': cat, 'cats': cats, 'goods': goods})
 
 def good(request, id):
     cats = Category.objects.all().order_by("name")
