@@ -15,6 +15,7 @@
              <tr>
                 <td><a href="/goods/good/{{ good.id }}/">{{good.name}}</a></td>
                  <td>{% if good.in_stock %} + {% endif %} </td>
+                 <td><a href="{% url "good_edit" id=good.id %}?page={{ page_obj.number }}">Изменить</a></td>
              </tr>
         {% endfor %}
         </table>

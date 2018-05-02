@@ -80,7 +80,16 @@ class GoodCreate(CreateView, GoodEditMixin):
         context["category"] = Category.objects.get(pk=self.kwargs["cat_id"])
         return context
 
+class GoodUpdate(UpdateView, GoodEditMixin, GoodEditView):
+    model = Good
+    fields = '__all__'
+    template_name = "good_edit.html"
 
+    pk_url_kwarg = "id"
+
+    def post(self, request, *args, **kwargs):
+        self.success_url = reverse("index", kwargs={"cat_id": Good.objects.get(pk=kwargs["id"]).category.id})
+        return super(GoodUpdate, self).post(request, *args, **kwargs)
 
 
 
