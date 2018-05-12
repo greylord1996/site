@@ -63,6 +63,10 @@ body{
     color: #564dff;
 }
 
+#main p.add_from_admin{
+    color: #564dff;
+}
+
 #footer{
     text-align: right;
     border-top: 1px #3cb5cc solid;
