@@ -5,7 +5,7 @@
 {% block title %}{{ good.name }} :: {{ good.category.name }}{% endblock %}
 
 {% block main %}
-    <p class="add_from_admin">{% if good.add_from_administration %}Из админки!{% endif %}</p>
+    <p class="add_from_admin">{% if good.add_from_administration %}<font color="red">Из админки!</font>{% endif %}</p>
     <h2>{{ good.name }}</h2>
     <p class="category">Категория: {{ good.category.name }}</p>
     <p>{{ good.description|linebreaksbr }}</p>

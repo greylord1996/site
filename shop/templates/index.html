@@ -19,7 +19,7 @@
              <td><a href="{% url "good_edit" id=good.id %}?page={{ page_obj.number }}">Изменить</a></td>
              {% endif %}
              {% if good.add_from_administration %}
-                 <td><a>Сорян, но я из админики - меня не фиксят</a></td>
+                 <td><a><font color="red">Сорян, но я из админки - меня не фиксят</font></a></td>
              {% endif %}
              </tr>
         {% endfor %}
