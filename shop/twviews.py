@@ -82,7 +82,7 @@ class GoodCreate(CreateView, GoodEditMixin):
 
 class GoodUpdate(UpdateView, GoodEditMixin, GoodEditView):
     model = Good
-    fields = '__all__'
+    fields = ['name', 'description', 'in_stock', 'category']
     template_name = "good_edit.html"
 
     pk_url_kwarg = "id"
