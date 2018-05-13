@@ -15,7 +15,12 @@
              <tr>
                 <td><a href="/goods/good/{{ good.id }}/">{{good.name}}</a></td>
                  <td>{% if good.in_stock %} + {% endif %} </td>
-                 <td><a href="{% url "good_edit" id=good.id %}?page={{ page_obj.number }}">Изменить</a></td>
+             {% if not good.add_from_administration %}
+             <td><a href="{% url "good_edit" id=good.id %}?page={{ page_obj.number }}">Изменить</a></td>
+             {% endif %}
+             {% if good.add_from_administration %}
+                 <td><a>Сорян, но я из админики - меня не фиксят</a></td>
+             {% endif %}
              </tr>
         {% endfor %}
         </table>
